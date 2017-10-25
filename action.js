@@ -5,8 +5,7 @@ function checkEmail(email) {
 }
 
 function myAjaxFunction() {
-    alert("Your Ajax has been made")
-    document.getElementsByClassName("subform").reset()
+    alert("Your Ajax has been made");
 }
 function checkName() {
     var regEx = new RegExp('\<');
@@ -21,7 +20,8 @@ function checkAge() {
     var regEx = new RegExp('^(([0-9][1-9])|([1-9][0-9])|[1-9])$');
     var age = document.getElementById('age').value;
     if (regEx.test(age)) {
-        document.getElementById('age').style.backgroundColor = ''
+        console.log("Contains invalid characters" + document.getElementById('age').value);
+        document.getElementById("age").style.backgroundColor="red";
     }
     else {
         document.getElementById('age').style.backgroundColor = ''
@@ -29,12 +29,15 @@ function checkAge() {
 }
 
 function validate() {
-    var validate = checkEmail(document.getElementById(email).value)
-    console.log(valid)
-    if(valid == true) {
-        myAjaxFunction()
-    }
-    else {
-        alert("The information is not correct, please check it")
-    }
-}
+   if (checkEmail(document.getElementById("email").value)) {
+       myAjaxFunction();
+
+       var inputs = document.getElementsByClassName('input');
+       for (var i = 0; i < inputs.length; i++) {
+           inputs[i].value = '';
+       }
+    } else {
+        alert("Failed to validate. Please check enters information.")
+       }
+   }
+
