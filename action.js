@@ -4,12 +4,37 @@ function checkEmail(email) {
 
 }
 
+function myAjaxFunction() {
+    alert("Your Ajax has been made")
+    document.getElementsByClassName("subform").reset()
+}
+function checkName() {
+    var regEx = new RegExp('\<');
+    if(regEx.test(document.getElementById('name').value)) {
+        document.getElementById('name').style.backgroundColor = 'red'
+    }
+    else {
+        document.getElementById('name').style.backgroundColor = ''
+    }
+}
 function checkAge() {
     var regEx = new RegExp('^(([0-9][1-9])|([1-9][0-9])|[1-9])$');
-    
-    if() {
-       
-    } else {
-       
+    var age = document.getElementById('age').value;
+    if (regEx.test(age)) {
+        document.getElementById('age').style.backgroundColor = ''
+    }
+    else {
+        document.getElementById('age').style.backgroundColor = ''
+    }
+}
+
+function validate() {
+    var validate = checkEmail(document.getElementById(email).value)
+    console.log(valid)
+    if(valid == true) {
+        myAjaxFunction()
+    }
+    else {
+        alert("The information is not correct, please check it")
     }
 }
